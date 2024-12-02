@@ -1,0 +1,111 @@
+<ProfileScreen>:
+    name: 'Profile'
+
+    ScrollView:
+        do_scroll_x: False
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: dp(20)
+            padding: dp(20)
+
+            # Profile Header
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: dp(250)
+                padding: dp(10)
+                spacing: dp(10)
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {"center_x": 0.5}
+
+                FitImage:
+                    source: root.profile_image
+                    size_hint: None, None
+                    size: dp(100), dp(100)
+                    pos_hint: {"center_x": 0.5}
+                    radius: [dp(50),]
+
+                MDLabel:
+                    text: root.fullname
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    font_style: "H6"
+
+                MDLabel:
+                    text: root.email
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 0.7
+                    font_style: "Caption"
+
+            # Profile Information
+            MDCard:
+                orientation: "vertical"
+                padding: dp(20)
+                size_hint_y: None
+                height: dp(200)
+                spacing: dp(10)
+                elevation: 4
+                radius: [20,]
+                pos_hint: {"center_x": 0.5}
+
+                MDLabel:
+                    text: "Profile Information"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDSeparator:
+                    height: dp(1)
+
+                GridLayout:
+                    cols: 2
+                    spacing: dp(10)
+                    padding: [0, dp(10), 0, 0]
+
+                    MDLabel:
+                        text: "Phone:"
+                        theme_text_color: "Hint"
+
+                    MDLabel:
+                        text: root.phone
+                        halign: "right"
+
+                    MDLabel:
+                        text: "Address:"
+                        theme_text_color: "Hint"
+
+                    MDLabel:
+                        text: root.street_address
+                        halign: "right"
+
+
+
+            # Action Buttons
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(50)
+                spacing: dp(20)
+                padding: dp(20)
+                pos_hint: {"center_x": 0.5}
+
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.LandingPage_callback()
+
+                MDRaisedButton:
+                    text: "Edit Profile"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.edit_profile()
+
+                MDRaisedButton:
+                    text: "Log Out"
+                    pos_hint: {"center_x": 0.5}
+                    md_bg_color: app.theme_cls.error_color
+                    on_release: app.logout()

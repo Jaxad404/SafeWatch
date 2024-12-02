@@ -1,0 +1,131 @@
+<ReportScreen>:
+    name: 'Report'
+    md_bg_color: 0.95, 0.95, 0.95, 1
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "Crime Analysis Report"
+            elevation: 10
+            left_action_items: [["arrow-left", lambda x: app.LandingPage_callback()]]
+            right_action_items: [["refresh", lambda x: root.refresh_data()], ["dots-vertical", lambda x: None]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height: True
+            padding: dp(15)
+            spacing: dp(40)
+
+            MDCard:
+                orientation: "vertical"
+                size_hint: None, None
+                size: dp(340), dp(140)
+                padding: dp(20)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: "teal"
+                radius: [15]
+
+                MDLabel:
+                    text: "Total Cases"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    font_style: "H6"
+                    halign: "center"
+
+                MDLabel:
+                    id: total_cases_label
+                    text: "Loading..."
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    font_style: "H4"
+                    halign: "center"
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: dp(15)
+                adaptive_height: True
+                padding: dp(10)
+
+                MDCard:
+                    orientation: "vertical"
+                    size_hint_x: 0.3
+                    padding: dp(15)
+                    spacing: dp(22)
+
+                    MDLabel:
+                        text: "Solved"
+                        theme_text_color: "Custom"
+                        text_color: "blue" #app.theme_cls.primary_color
+                        font_style: "Subtitle1"
+                        halign: "center"
+
+                    MDLabel:
+                        id: solved_cases_label
+                        text: "Loading..."
+                        theme_text_color: "Custom"
+                        text_color: "teal"
+                        font_style: "H5"
+                        halign: "center"
+
+                MDCard:
+                    orientation: "vertical"
+                    size_hint_x: 0.3
+                    padding: dp(15)
+                    spacing: dp(22)
+
+                    MDLabel:
+                        text: "Pending"
+                        theme_text_color: "Custom"
+                        text_color: "blue" #app.theme_cls.primary_color
+                        font_style: "Subtitle1"
+                        halign: "center"
+
+                    MDLabel:
+                        id: pending_cases_label
+                        text: "Loading..."
+                        theme_text_color: "Custom"
+                        text_color: "teal"
+                        font_style: "H5"
+                        halign: "center"
+
+                MDCard:
+                    orientation: "vertical"
+                    size_hint_x: 0.3
+                    padding: dp(15)
+                    spacing: dp(22)
+
+                    MDLabel:
+                        text: "Dismissed"
+                        theme_text_color: "Custom"
+                        text_color: "blue" #app.theme_cls.primary_color
+                        font_style: "Subtitle1"
+                        halign: "center"
+
+                    MDLabel:
+                        id: dismissed_cases_label
+                        text: "Loading..."
+                        theme_text_color: "Custom"
+                        text_color: "teal"
+                        font_style: "H5"
+                        halign: "center"
+
+            MDRaisedButton:
+                text: "View Case Charts"
+                pos_hint: {"center_x": 0.5}
+                size_hint: None, None
+                size: dp(200), dp(50)
+                on_press: root.view_case_charts()
+
+        MDRelativeLayout:
+            id: chart_layout
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(400)
+
+        MDFloatingActionButtonSpeedDial:
+            data: {"Send SMS": "message", "Make Call": "phone"}
+            root_button_anim: True
+            callback: root.handle_speed_dial
+            pos_hint: {"x": 0.05, "y": 0.15}

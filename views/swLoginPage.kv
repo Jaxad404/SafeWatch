@@ -1,0 +1,87 @@
+<LoginScreen>:
+    name: 'login'
+    #md_bg_color: get_color_from_hex('#7f8e9e')
+    md_bg_color: 0,0,0,1 #get_color_from_hex('#88BDF2')
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 40
+        size_hint: 1, 1
+        pos_hint: {"center_y": 0.5}
+        elevation: 5
+
+        FitImage:
+            source: 'assets/images/sw.jpg'
+            size_hint: 1, .45
+            pos_hint: {"center_x": .5 }
+            radius: [36, 36, 36, 36]
+            width: dp(1080/2.5)
+            keep_ratio: False
+
+        MDTextField:
+            id: username
+            hint_text: "Username"
+            mode: "rectangle"
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
+            icon_right: "account"
+            theme_text_color: "Custom"
+            text_color_normal: get_color_from_hex('#005b96')
+            text_color_focus: "teal"
+            icon_right_color_normal: get_color_from_hex('#005b96')
+            icon_right_color_focus: "blue"
+            hint_text_color_normal: get_color_from_hex('#005b96')
+            hint_text_color_focus: "teal"
+            line_color_normal: get_color_from_hex('#005b96')
+            line_color_focus: "teal"
+
+        MDTextField:
+            id: password
+            hint_text: "Password"
+            password: True
+            mode: "rectangle"
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5}
+            icon_right: "eye-off"
+            theme_text_color: "Custom"
+            text_color_normal: get_color_from_hex('#005b96')
+            text_color_focus: "teal"
+            hint_text_color_normal: get_color_from_hex('#005b96')
+            hint_text_color_focus: "teal"
+            icon_right_color_normal: get_color_from_hex('#005b96')
+            icon_right_color_focus: "blue"
+            line_color_normal: get_color_from_hex('#005b96')
+            line_color_focus: "teal"
+
+
+        MDRaisedButton:
+            text: "Login"
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.5}
+            on_release: root.validate_login(username.text, password.text)
+
+
+        MDTextButton:
+            text: "Don't have an account? Register"
+            pos_hint: {"center_x": 0.5}
+            theme_text_color: "Custom"
+            text_color: "teal" #get_color_from_hex('#2e003e')
+            on_release: root.manager.current = 'SignUp'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
